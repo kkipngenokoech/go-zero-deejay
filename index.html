@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artist Playback</title>
+    <style>
+      .container {
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Artist Playback</h1>
+      <input type="text" id="artistInput" placeholder="Enter artist name" />
+      <button onclick="searchAndPlay()">Search & Play</button>
+      <div id="playerContainer"></div>
+    </div>
+
+    <script src="spotify-web-playback.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
