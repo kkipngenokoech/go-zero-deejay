@@ -1,6 +1,29 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+app.use(bodyParser.json());
+
+// Endpoint to receive incoming webhook notifications
+app.post('https://piurkor.developers.africastalking.com/incoming-messages', (req, res) => {
+  const { text, from } = req.body;
+
+  // Process the received text as needed
+  console.log('Received message:');
+  console.log('From:', from);
+  console.log('Text:', text);
+
+  // Pass the text to your desired function or perform any other actions
+
+  res.sendStatus(200);
+});
+
+
+
+
 function searchAndPlay() {
     const artistName = document.getElementById('artistInput').value;
-    const accessToken = 'BQCWpuCriHS7gqaNg8m463sbFPWuQMH_u_v2nqTfSAp5y3NwP-FJJRqGloO5w9zaQAoOutg241mRRZeM33X96gayaJwY5ywyijj77ilORxrxLG-ZKrr-RM9y2g-DVI_RWv5ALHJVX3fn_d6lTqwuESB1jonjtaP7dI0dWQvrkrnJS5CNLcBbon_tR637AeZg_d5erfrPVbIJFXtYeKWD6BR5225n'; // Replace with your access token
+    const accessToken = 'BQC8t0jRhWzuDrePiHWcQ0vVmqtm5oa6iAaHZG3S1FVP0oe5mVJLK3l2SvXSyYzGtMrVoHIBgp3G2D38LpqOW2t6qqahGLt9z9JF-KGjgWG41jj_1d-jyv8nA2Br85kqRoMxsSsjm95y2tQHmG9vJsNRObLiqkfZfVclGLC_RBXKv6woAPMo7ErtasCf8sAXmaMJwGksFB_mLeEm9ONErsFIkln1A2WUiKgN-er7aIGKj-j3jEIsCVA3lMayBVv39sROudDvYsZIoZOtH_4_ete5'; // Replace with your access token
   
     fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(artistName)}&type=artist`, {
       method: 'GET',
@@ -36,3 +59,7 @@ function searchAndPlay() {
       });
   }
   
+
+  app.listen(3000, () => {
+    console.log('Server listening on port 3000');
+  });
